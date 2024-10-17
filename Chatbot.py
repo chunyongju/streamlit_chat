@@ -29,5 +29,8 @@ if prompt := st.chat_input():
     st.chat_message("user").write(prompt)
     response = client.chat.completions.create(model="ft:gpt-4o-2024-08-06:personal:chunbot:AHpPj9PJ", messages=st.session_state.messages)
     msg = response.choices[0].message.content
+    completion = response.usage.completion_tokens
+    prompt = response.usage.prompt_tokens
+    total = response.usage.total_tokens
     st.session_state.messages.append({"role": "assistant", "content": msg})
-    st.chat_message("assistant").write(msg)
+    st.chat_message("assistant").write(f"{msg} (입력: {completion}, 응답: {prompt}, 총: {total})")
