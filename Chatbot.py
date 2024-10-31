@@ -4,15 +4,18 @@ import streamlit as st
 st.set_page_config(page_title="천부장bot", page_icon="💬")
 openai_api_key = st.secrets["chatbot_api_key"]
 
-#with st.sidebar:
+# with st.sidebar:
+#    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 #    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 #    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
 #    "[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
 #    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
+st.sidebar.header("💬 천부장bot")
+
 st.title("💬 천부장bot")
 st.caption("🚀 Fine-tuning : 천부장의 카톡, 네이트온 대화를 DATA SET으로 학습")
-st.caption(" ( 신기하게 개인적인 대화가 거의 없고, 대부분 업무 대화인데, 말이 짧네요 - - ; )")
+
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요?"}]
 
